@@ -2,9 +2,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { ApolloProvider } from "@apollo/client";
 import App from "./App";
-import "./index.css"; // Must import CSS
+import { store } from "./store";
+import client from "./apollo/client";
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
     </Provider>
   </React.StrictMode>
 );
